@@ -1,0 +1,552 @@
+{% extends "_layouts/main"  %}
+{% set cart = craft.commerce.carts.cart %}
+{% block main %}
+	<section class="heading-banner-area pt-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-banner">
+						<div class="breadcrumbs">
+							<ul>
+								<li>
+									<a href="/">
+										Home
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li>
+									Checkout
+								</li>
+							</ul>
+						</div>
+						<div class="heading-banner-title">
+							<h1>
+								Checkout
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% if cart.lineItems | length %}
+
+		<div class="checkout-area mt-20">
+			<div class="container">
+				<div
+					class="row">
+					<!--Coupon Area Start-->
+					<div class="col-lg-12">
+						<div
+							class="coupon-accordion">
+							<!--Accrodion Start-->
+							<h3>
+								Returning customer?
+								<span id="showlogin">
+									Click here to login
+								</span>
+							</h3>
+							<div id="checkout-login" class="coupon-content">
+								<div class="login-form mt-0">
+									<form method="post" accept-charset="UTF-8">
+										<p>
+											If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing & Shipping section.
+										</p>
+										<div class="form-fild">
+											<p>
+												<label>
+													Username or email address
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" name="username" value="">
+										</div>
+										<div class="form-fild">
+											<p>
+												<label>
+													Password
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="password" name="password" value="">
+										</div>
+										<div class="login-submit">
+											<button type="submit" class="form-button">
+												Login
+											</button>
+											<label>
+												<input class="checkbox" type="checkbox" id="rememberme" name="rememberme" value="">
+												<span>
+													Remember me
+												</span>
+											</label>
+										</div>
+										<div class="lost-password">
+											<a href="#">
+												Lost your password?
+											</a>
+										</div>
+									</form>
+								</div>
+							</div>
+							<!--Accrodion End-->
+						</div>
+					</div>
+					<!--Coupon Area End-->
+					<!--Checkout Area Start-->
+					<div class="col-md-12">
+						<div class="checkout-form-area">
+							<div class="checkout-title">
+								<h3>
+									Billing details
+								</h3>
+							</div>
+							<div class="ceckout-form">
+								<form
+									action="#">
+									<!--Billing Fields Start-->
+									<div class="billing-fields">
+										<div class="form-fild first-name">
+											<p>
+												<label>
+													First name
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_first_name" value="">
+										</div>
+										<div class="form-fild last-name">
+											<p>
+												<label>
+													First name
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_last_name" value="">
+										</div>
+										<div class="form-fild company-name">
+											<p>
+												<label>
+													Company Name
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_company_name" value="">
+										</div>
+										<div class="form-fild country">
+											<p>
+												<label>
+													Country
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<select name="billing_country" id="billing_country" data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1">
+												<option value="Select a country…">
+													Select a country…
+												</option>
+												<option value="United States">
+													United States
+												</option>
+												<option value="United Kingdom">
+													United Kingdom
+												</option>
+												<option value="Afghanistan">
+													Afghanistan
+												</option>
+												<option value="Aland Islands">
+													Aland Islands
+												</option>
+												<option value="Albania">
+													Albania
+												</option>
+												<option value="Algeria">
+													Algeria
+												</option>
+												<option value="American Samoa">
+													American Samoa
+												</option>
+												<option value="Andorra">
+													Andorra
+												</option>
+												<option value="Angola">
+													Angola
+												</option>
+												<option value="Anguilla">
+													Anguilla
+												</option>
+											</select>
+										</div>
+										<div class="form-fild billing_address_1">
+											<p>
+												<label>
+													Street address
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="House number and street name" name="billing_company_name" value="">
+										</div>
+										<div class="form-fild billing_address_2">
+											<input type="text" placeholder="Apartment, suite, unit etc. (optional)" name="billing_company_name" value="">
+										</div>
+										<div class="form-fild billing_postcode">
+											<p>
+												<label>
+													Postcode / ZIP
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_company_name" value="">
+										</div>
+										<div class="form-fild billing_city">
+											<p>
+												<label>
+													Town / City
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_company_name" value="">
+										</div>
+										<div class="form-fild billing_phone">
+											<p>
+												<label>
+													Phone
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_company_name" value="">
+										</div>
+										<div class="form-fild email">
+											<p>
+												<label>
+													Email
+													<span class="required">
+														*
+													</span>
+												</label>
+											</p>
+											<input type="text" placeholder="" name="billing_company_name" value="">
+										</div>
+									</div>
+									<!--Billing Fields End-->
+									<!--Account Fields Start-->
+									<div class="account-fields">
+										<div class="create-acc">
+											<input id="cbox" type="checkbox">
+											<label>
+												Create an account?
+											</label>
+										</div>
+										<div id="cbox_info" class="create-account">
+											<div class="form-fild billing_password">
+												<p>
+													<label>
+														<span class="create-pass">
+															Create account password
+														</span>
+														<span class="required"></span>
+													</label>
+												</p>
+												<input name="password" placeholder="Password" type="password">
+											</div>
+										</div>
+									</div>
+									<!--Account Fields End-->
+									<!--Shipping Fields Start-->
+									<div class="shipping-fields">
+										<div class="ship-fild">
+											<input id="ship-box" type="checkbox">
+											<label>
+												Ship to a different address?
+											</label>
+										</div>
+										<div id="ship-box-info" class="ship-box">
+											<div class="ship-box-billing-fild">
+												<div class="form-fild first-name">
+													<p>
+														<label>
+															First name
+															<span class="required">
+																*
+															</span>
+														</label>
+													</p>
+													<input type="text" placeholder="" name="billing_first_name" value="">
+												</div>
+												<div class="form-fild last-name">
+													<p>
+														<label>
+															First name
+															<span class="required">
+																*
+															</span>
+														</label>
+													</p>
+													<input type="text" placeholder="" name="billing_last_name" value="">
+												</div>
+												<div class="form-fild company-name">
+													<p>
+														<label>
+															Company Name
+														</label>
+													</p>
+													<input type="text" placeholder="" name="billing_company_name" value="">
+												</div>
+												<div class="form-fild country">
+													<p>
+														<label>
+															Country
+															<span class="required">
+																*
+															</span>
+														</label>
+													</p>
+													<select name="billing_country" id="billing_country2" data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1">
+														<option value="Select a country…">
+															Select a country…
+														</option>
+														<option value="United States">
+															United States
+														</option>
+														<option value="United Kingdom">
+															United Kingdom
+														</option>
+														<option value="Afghanistan">
+															Afghanistan
+														</option>
+														<option value="Aland Islands">
+															Aland Islands
+														</option>
+														<option value="Albania">
+															Albania
+														</option>
+														<option value="Algeria">
+															Algeria
+														</option>
+														<option value="American Samoa">
+															American Samoa
+														</option>
+														<option value="Andorra">
+															Andorra
+														</option>
+														<option value="Angola">
+															Angola
+														</option>
+														<option value="Anguilla">
+															Anguilla
+														</option>
+													</select>
+												</div>
+												<div class="form-fild billing_address_1">
+													<p>
+														<label>
+															Street address
+															<span class="required">
+																*
+															</span>
+														</label>
+													</p>
+													<input type="text" placeholder="House number and street name" name="billing_company_name" value="">
+												</div>
+												<div class="form-fild billing_address_2">
+													<input type="text" placeholder="Apartment, suite, unit etc. (optional)" name="billing_company_name" value="">
+												</div>
+												<div class="form-fild billing_postcode">
+													<p>
+														<label>
+															Postcode / ZIP
+															<span class="required">
+																*
+															</span>
+														</label>
+													</p>
+													<input type="text" placeholder="" name="billing_company_name" value="">
+												</div>
+												<div class="form-fild billing_city">
+													<p>
+														<label>
+															Town / City
+															<span class="required">
+																*
+															</span>
+														</label>
+													</p>
+													<input type="text" placeholder="" name="billing_company_name" value="">
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--Shipping Fields End-->
+									<!--Additional Fields Start-->
+									<div class="additional-fields">
+										<div class="order-notes">
+											<div class="form-fild order-name">
+												<p>
+													<label>
+														Order notes
+													</label>
+												</p>
+												<textarea name="order_comments" id="checkout-mess" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
+											</div>
+										</div>
+									</div>
+									<!--Additional Fields End-->
+									<!--Your Order Fields Start-->
+									<div class="your-order-fields mt-30">
+										<div class="your-order-title">
+											<h3>
+												Your order
+											</h3>
+										</div>
+										<div class="your-order-table table-responsive">
+											<table>
+												<thead>
+													<tr>
+														<th class="product-name">
+															Product
+														</th>
+														<th class="product-total">
+															Total
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+													{% for item in cart.lineItems %}
+
+														<tr class="cart_item">
+															<td class="product-name">
+																{{item.purchasable.product.productTitle}}
+
+																<strong class="product-quantity">
+																	{{item.qty}}
+
+																</strong>
+															</td>
+															<td class="product-total">
+																<span class="amount">
+																	{{ item.price | currency(cart.currency) }}
+																</span>
+															</td>
+														</tr>
+													{% endfor %}
+												</tbody>
+											</tbody>
+											<tfoot>
+												<tr class="cart-subtotal table-yellow">
+													<th>
+														Subtotal
+													</th>
+													<td>
+														<span class="amount" style="color:#a7a5a5 ">
+
+															{{ cart.totalPrice | currency(cart.currency )}}
+														</span>
+													</td>
+												</tr>
+												<tr class="shipping">
+													<th class="table-yellow">
+														Shipping Total:
+
+													</th>
+													<td data-title="shipping">
+														<p style="color:#a7a5a5">
+															{{ cart.totalShippingCost | currency(cart.currency) }}
+
+														</p>
+													</td>
+												</tr>
+												<tr class="order-total">
+													<th class="table-yellow">
+														Total
+													</th>
+													<td>
+														<strong>
+															<span class="total-amount">
+																{{ cart.totalPrice | currency(cart.currency )}}
+															</span>
+														</strong>
+													</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+								<!--Your Order Fields End-->
+								<div class="checkout-payment">
+									<ul>
+										<li class="payment_method_cheque-li">
+											<input id="payment_method_cheque" class="input-radio" name="payment_method" checked="checked" value="bacs" type="radio">
+											<label for="payment_method_cheque">
+												Check payments
+											</label>
+											<div class="pay-box payment_method_cheque">
+												<p>
+													Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+												</p>
+											</div>
+										</li>
+										<li class="payment_method_paypal-li">
+											<input id="payment_method_paypal" class="input-rado" name="payment_method" value="paypal" data-order_button_text="Proceed to PayPal" type="radio">
+											<label for="payment_method_paypal">
+												PayPal
+												<a href="">
+													<img src="img/payment/payment2.png" alt=""/>
+													What is PayPal?
+												</a>
+											</label>
+											<div class="pay-box payment_method_paypal">
+												<p>
+													Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.
+												</p>
+											</div>
+										</li>
+									</ul>
+									<button class="order-btn" type="submit">
+										Place order
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!--Checkout Area End-->
+			</div>
+		</div>
+	</div>
+{% else %}
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2>
+					Nothing to purchase
+				</h2>
+			</div>
+			<div class="col-lg-12">
+				<div class="col-lg-3" style="margin-bottom: 20px;">
+					<a class="button" href="/store">
+						Return to Products
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endif %}{% endblock %}

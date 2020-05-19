@@ -1,0 +1,117 @@
+{% extends "_layouts/main"  %}
+{% block main %}
+
+	{% set query = craft.app.request.getQueryParam('q')%}
+	{% set entries = craft.products.search(query).all %}
+
+	<section class="heading-banner-area pt-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-banner">
+						<div class="breadcrumbs">
+							<ul>
+								<li>
+									<a href="/">
+										Home
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li>
+									Search Results
+								</li>
+							</ul>
+						</div>
+						{% if entries | length %}
+
+							<div class="heading-banner-title">
+								<h1>
+									Search Results for "
+									{{query}}
+									"
+								</h1>
+
+							</div>
+						{% else %}
+							<h1>
+								No Search Results
+							</h1>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="blog-area mt-20">
+		<div class="container">
+			<div
+				class="row">
+				<!--Blog Left Side Start-->
+				<div class="col-lg-9 col-md-12 col-12">
+					<div class="all-single-blog">
+
+						{% for entry in entries %}
+							<div class="single-blog-post mb-40">
+								<div class="post-thumbnail img-full">
+									<a href="{{entry.url}}">
+										<img src="{{entry.productImage.one.getUrl('productListing')}}" alt="">
+
+									</a>
+								</div>
+								<div class="postinfo-wrapper">
+									<div class="post-header">
+										<span class="post-category">
+											<a rel="category tag" href="#">
+												{{entry.category}}
+											</a>
+											,
+											<a rel="category tag" href="#">
+												{{entry.subCategory}}
+											</a>
+										</span>
+										<h1 class="post-title post-icon">
+											<a href="{{entry.url}}">
+												{{entry.title}}
+											</a>
+										</h1>
+									</div>
+									<div class="post-info">
+										<div class="entry-summary">
+											<p>
+												{{entry.productDescription}}
+											</p>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+						<div class="pagination">
+							<ul class="page-number">
+								<li class="active">
+									<a href="#">
+										1
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										2
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="fa fa-angle-double-right"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<!--Pagination End-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends "_layouts/main"  %}
+{% block main %}
+	<section class="heading-banner-area pt-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-banner">
+						<div class="breadcrumbs">
+							<ul>
+								<li>
+									<a href="/">
+										Home
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li>
+									Contact
+								</li>
+							</ul>
+						</div>
+						<div class="heading-banner-title">
+							<h1>
+								Contact
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="contact-form-area mt-20">
+		<div class="container">
+			<div
+				class="row">
+				<!--Contact Form Start-->
+				<div class="col-lg-7">
+
+					<div class="contact-form">
+						<form id="contact-form" action="mail.php" method="post">
+							<div class="contact-input">
+								<div class="first-name">
+									<input type="text" name="first_name" placeholder="First Name *">
+								</div>
+								<div class="last-name">
+									<input type="text" name="last_name" placeholder="Last Name *">
+								</div>
+								<div class="email">
+									<input type="email" name="email" placeholder="Email *">
+								</div>
+								<div class="subject">
+									<input type="text" name="subject" placeholder="Subject *">
+								</div>
+							</div>
+							<div class="contact-message mb-20">
+								<div class="message pr-10 pr-xs-0">
+									<textarea name="message" cols="40" rows="10" placeholder="Message *"></textarea>
+								</div>
+							</div>
+							<div class="contact-submit">
+								<button type="submit" class="form-button">
+									Send Email
+								</button>
+							</div>
+						</form>
+						<p class="form-messege"></p>
+					</div>
+				</div>
+				<!--Contact Form End-->
+				<!--Contact Address Start-->
+				<div class="col-lg-5">
+					<div class="contact-address-info">
+						<div class="contact-form-title">
+							<h2>
+								CONTACT US
+							</h2>
+						</div>
+						<div class="contact-description mb-35">
+							<p>
+								Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas human.
+							</p>
+						</div>
+						<div class="contact-address mb-35">
+							<ul>
+								<li>
+									<i class="fa fa-fax"></i>
+									Address : 1019 Concord Street North, South Saint Paul, MN
+
+								</li>
+								<li>
+									<i class="fa fa-phone"></i>
+									Toll Free: 1-800-373-1326
+
+								</li>
+								<li>
+									<i class="fa fa-envelope-o"></i>
+									orders@spcbrass.com
+
+								</li>
+							</ul>
+						</div>
+						<div class="woring-hours mb-35">
+							<h3>
+								<strong>
+									Working hours
+								</strong>
+							</h3>
+							<p>
+								<strong>
+									Monday – Saturday
+								</strong>
+								:  8AM – 5PM
+							</p>
+						</div>
+					</div>
+				</div>
+				<!--Contact Address End-->
+			</div>
+		</div>
+	</section>
+	<div class="brand-area ptb-30 white-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div
+						class="brand-active owl-carousel">
+						<!--Single Brand Start-->
+						<div class="single-brand img-full">
+							<a href="#">
+								<img src="img/brand/1.png" alt="">
+							</a>
+						</div>
+						<!--Single Brand End-->
+						<!--Single Brand Start-->
+						<div class="single-brand img-full">
+							<a href="#">
+								<img src="img/brand/2.png" alt="">
+							</a>
+						</div>
+						<!--Single Brand End-->
+						<!--Single Brand Start-->
+						<div class="single-brand img-full">
+							<a href="#">
+								<img src="img/brand/3.png" alt="">
+							</a>
+						</div>
+						<!--Single Brand End-->
+						<!--Single Brand Start-->
+						<div class="single-brand img-full">
+							<a href="#">
+								<img src="img/brand/4.png" alt="">
+							</a>
+						</div>
+						<!--Single Brand End-->
+						<!--Single Brand Start-->
+						<div class="single-brand img-full">
+							<a href="#">
+								<img src="img/brand/5.png" alt="">
+							</a>
+						</div>
+						<!--Single Brand End-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

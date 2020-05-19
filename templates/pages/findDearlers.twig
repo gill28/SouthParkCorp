@@ -1,0 +1,23 @@
+{% extends "_layouts/map"  %}
+{% block main %}
+	<div class="map-container">
+		<div class="searchPanel">
+			<div>
+				<label for="">
+					My Locaiton
+				</label>
+				<button id="myLocationBtn" title="My Location"></button>
+
+				<input id="searchTbx" type="search" placeholder="Type in City"/>
+				<button id="searchBtn" title="Search"></button>
+			</div>
+		</div>
+
+		<div id="listPanel"></div>
+
+		<div id="myMap"></div>
+
+
+	</div>
+
+{% endblock %}

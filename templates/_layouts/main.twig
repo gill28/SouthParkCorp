@@ -1,0 +1,462 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>
+			South Park Brass
+		</title>
+		<meta name="description" content="">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+
+
+
+
+
+w[l] = w[l] || [];
+w[l].push ({'gtm.start': new Date ().getTime (), event: 'gtm.js'});
+var f = d.getElementsByTagName (s)[0],
+j = d.createElement (s),
+dl = l != 'dataLayer' ? '&l=' + l : '';
+j.async = true;
+j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+f.parentNode.insertBefore (j, f);
+
+
+
+
+
+})(window, document, 'script', 'dataLayer', 'GTM-PBMJFBS');
+		</script>
+		<!-- End Google Tag Manager -->
+		<link rel="shortcut icon" type="image/x-icon" href="{{url('/')}}images/favicon.png">
+		<link rel="stylesheet" href="/css/ionicons.min.css">
+		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/animate.css">
+		<link rel="stylesheet" href="/css/jquery-ui.min.css">
+		<link rel="stylesheet" href="/css/chosen.css">
+		<link rel="stylesheet" href="/css/meanmenu.min.css">
+		<link rel="stylesheet" href="/css/jquery.fancybox.css">
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/nivo-slider.css">
+		<link rel="stylesheet" href="/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/css/easyzoom.css">
+		<link rel="stylesheet" href="/css/slick.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/default.css">
+		<link rel="stylesheet" href="/style.css">
+		<link rel="stylesheet" href="/css/responsive.css">
+		<link rel="stylesheet" href="/css/cooper-fonts.css">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/html-inspector/0.8.2/html-inspector.js"></script>
+		<script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+	</head>
+
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBMJFBS" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<div class="wrapper home-2">
+			<header>
+				<div class="header-container">
+					<div class="header-top-area">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-5 col-md-5 col-12">
+									<div class="header-top-menu">
+										<ul>
+											<li><a href="tel:6514554510"><i class="ion-ios-telephone"></i><span>651-455-4510</span></a></li>
+											<li><a href="mail:info@spcbrass.com"><i class="ion-email"></i><span>info@spcbrass.com</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-7 col-md-7 d-lg-block d-md-block d-none text-right">
+									<div class="header-top-menu">
+										<ul>
+											<li class="textUpper">
+												<span>
+													Become a dealer
+												</span>
+											</li>
+											<li class="textUpper">
+												<span>
+													Dealer Login
+												</span>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header-middel-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2 col-md-2 col-12">
+							<div class="logo">
+								<a href="/">
+									<img src="{{url('/')}}images/spc-logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-5 col-12">
+							<div class="search-box-area">
+								<form action="{{url('search/results')}}">
+									{{csrfInput()}}
+									<div class="search-box">
+										<input type="text" name="q" id="search" placeholder="Search Products...">
+										<button type="submit">
+											<i class="ion-ios-search-strong"></i>
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-12 text-right">
+							<div class="mini-cart-area">
+								<ul>
+									{% set cart = craft.commerce.carts.cart %}
+									<li>
+										<a href="#">
+											<i class="ion-android-cart"></i>
+											<span class="cart-add">
+												{{ craft.orders.number(cart.number).one().totalQty ?? 0}}
+											</span>
+											<span class="cart-total">
+												$
+												{{ cart.storedItemTotal | number_format(2, '.', ',') }}
+
+												<i class="fa fa-angle-down"></i>
+											</span>
+										</a>
+										<ul class="cart-dropdown">
+											{% if cart.lineItems | length %}
+												{% for item in cart.lineItems %}
+
+													<li class="cart-item">
+														<div class="cart-img">
+															<a href="{{item.purchasable.product.url}}">
+																<img src="{{item.purchasable.product.productImage.one.getUrl()}}" alt="">
+															</a>
+														</div>
+														<div class="cart-content">
+															<h4>
+																<a href="{{item.purchasable.product.url}}">
+																	{{item.purchasable.product.productTitle}}
+
+																</a>
+															</h4>
+															<p class="cart-quantity">
+																Qty:
+																{{item.qty}}
+															</p>
+															<p class="cart-price">
+																{{ item.price | currency(cart.currency) }}
+
+															</p>
+														</div>
+													</li>
+												{% endfor %}
+
+												<li class="cart-total-amount mtb-20">
+													<h4>
+														SubTotal :
+														<span class="pull-right">
+															{{ cart.totalPrice | currency(cart.currency )}}
+														</span>
+													</h4>
+												</li>
+
+
+												<li class="cart-button">
+													<a href="store/cart" class="button2">
+														View cart
+													</a>
+													<a href="store/checkout" class="button2">
+														Check out
+													</a>
+												</li>
+											{% else %}
+												<p>
+													Cart is Emtpy
+												</p>
+											{% endif %}
+										</ul>
+									</li>
+								</li>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html></div><div class="header-bottom-area header-sticky">
+<div class="mx-auto">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="logo-sticky">
+				<a href="index.html">
+					<img src="{{url('/')}}images/spc-logo.png" alt="south park brass logo">
+				</a>
+			</div>
+			<div class="main-menu-area" style="float: none;">
+				<div class="container">
+					<div class="row" style="justify-content: start;">
+						<nav class="red-nav">
+							<ul class="main-menu">
+								<li class="">
+									<a href="/">
+										Home
+									</a>
+								</li>
+								<li class="">
+									<a href="/about-us">
+										About
+									</a>
+								</li>
+								<li class="">
+									<a href="/store">
+										Products
+									</a>
+								</li>
+								<li>
+									<a href="/find-a-dealer">
+										Find a Dealer
+									</a>
+								</li>
+								<li>
+									<a href="/faq">
+										FAQ
+									</a>
+								</li>
+								<li>
+									<a href="/customer-service">
+										Customer Service
+									</a>
+								</li>
+								<li>
+									<a href="/contact-us">
+										Contact Us
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div></div><div class="mobile-menu-area d-lg-none d-md-none d-block">
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="mobile-menu">
+				<nav>
+					<ul>
+						<li class="">
+							<a href="/">
+								Home
+							</a>
+						</li>
+						<li class="">
+							<a href="/about-us">
+								About
+							</a>
+						</li>
+						<li class="">
+							<a href="/shop">
+								Products
+							</a>
+						</li>
+						<li>
+							<a href="/find-a-dealer">
+								Find a Dealer
+							</a>
+						</li>
+						<li>
+							<a href="/faq">
+								FAQ
+							</a>
+						</li>
+						<li>
+							<a href="/customer-service">
+								Customer Service
+							</a>
+						</li>
+						<li>
+							<a href="/contact-us">
+								Contact Us
+							</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div></div></div></body></html></header>{% block main %}{% endblock %}<footer><div class="footer-container darkgrey-bg"><div class="footer-top-area ptb-50"><div class="container"><div class="row">
+<div class="col-lg-5 col-md-7">
+	<div class="single-footer">
+		<div class="footer-logo">
+			<a href="index.html">
+				<img src="{{url('/')}}images/spc-logo.png" alt="">
+			</a>
+		</div>
+		<div class="footer-content">
+			<div class="contact">
+				<p>
+					<label>
+						Address:
+					</label>
+					1019 Concord Street North, South Saint Paul, MN
+				</p>
+				<p>
+					<label>
+						Phone:
+					</label>
+					<a href="tel:+8003731326">
+						Toll Free: 1-800-373-1326
+
+					</a>
+
+				</p>
+				<p>
+					<label>
+						Email:
+					</label>
+					<a href="mailto:orders@spcbrass.com">
+						orders@spcbrass.com
+					</a>
+				</p>
+				<p>
+					<label>
+						Local Fax:
+					</label>
+					<a href="tel:6514551326">
+						(651) 455-1326
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-lg-2 col-md-6">
+	<div class="single-footer mt-30">
+		<div class="footer-title">
+			<h3>
+				information
+			</h3>
+		</div>
+		<ul class="footer-info">
+			<li>
+				<a href="/">
+					Home
+				</a>
+			</li>
+			<li>
+				<a href="/about-us">
+					About
+				</a>
+			</li>
+			<li>
+				<a href="/store">
+					Products
+				</a>
+			</li>
+			<li>
+				<a href="/find-a-dealer">
+					Find a Dealer
+				</a>
+			</li>
+			<li>
+				<a href="/faq">
+					FAQ
+				</a>
+			</li>
+			<li>
+				<a href="/customer-service">
+					Customer Service
+				</a>
+			</li>
+			<li>
+				<a href="/contact-us">
+					Contact Us
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="col-lg-2 col-md-6">
+	<div class="single-footer mt-30">
+		<div class="footer-title">
+			<h3>
+				Account
+			</h3>
+		</div>
+		<ul class="footer-info">
+			<li>
+				<a href="#">
+					Dealer login
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					Become a Dealer
+				</a>
+			</li>
+			<li>
+				<a href="/store/cart">
+					Shopping Cart
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="col-lg-3 col-md-6">
+	<div class="single-footer mt-30">
+		<div class="footer-title">
+			<h3>
+				follow us
+			</h3>
+		</div>
+		<ul class="socil-icon mb-40">
+			<li>
+				<a href="#" data-toggle="tooltip" title="Twitter">
+					<i class="ion-social-twitter"></i>
+				</a>
+			</li>
+			<li>
+				<a href="#" data-toggle="tooltip" title="Facebook">
+					<i class="ion-social-facebook"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div></div></div></div><div class="footer-bottom-area"><div class="container"><div class="row">
+<div class="col-lg-6 col-md-6">
+	<div class="copyright-text">
+		<p>
+			Copyright ©
+			<script>
+				document.write (new Date ().getFullYear ());
+			</script>
+			<a href="#" target="_blank">
+				South Park Brass
+			</a>
+			, All Rights Reserved.
+		</p>
+	</div>
+</div></div></div></div></div></footer></div><script src="/js/vendor/jquery-1.12.4.min.js"></script><script src="/js/popper.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/imagesloaded.pkgd.min.js"></script><script src="/js/isotope.pkgd.min.js"></script><script src="/js/jquery-ui.min.js"></script><script src="/js/jquery.countdown.min.js"></script><script src="/js/jquery.counterup.min.js"></script><script src="/js/jquery.scrollUp.min.js"></script><script src="/js/chosen.jquery.js"></script><script src="/js/jquery.meanmenu.min.js"></script><script src="/js/instafeed.min.js"></script><script src="/js/easyzoom.min.js"></script><script src="/js/jquery.fancybox.pack.js"></script><script src="/js/jquery.nivo.slider.js"></script><script src="/js/waypoints.min.js"></script><script src="/js/owl.carousel.min.js"></script><script src="/js/slick.min.js"></script><script src="/js/wow.min.js"></script><script src="/js/plugins.js"></script><script src="/js/main.js"></script></html></body>

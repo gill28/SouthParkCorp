@@ -1,0 +1,195 @@
+{% extends '_layouts/main' %}
+
+{% block main %}
+	<div class="heading-banner-area pt-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-banner">
+						<div class="breadcrumbs">
+							<div class="mt-8">
+								<a href="{{ url('store/') }}">
+									&larr; All products
+								</a>
+							</div>
+
+							<ul>
+								<li>
+									<a href="/">
+										Home
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li>
+									<a href="/store">
+										Shop
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li style="color: #363f4d;"></li>
+
+
+								{{product.category}}
+
+								<span class="breadcome-separator">
+									>
+								</span>
+							</li>
+							<li style="color: #363f4d;"></li>
+
+
+							{{product.subCategory}}
+
+							<span class="breadcome-separator">
+								>
+							</span>
+						</li>
+
+						<li>
+							{{product.title}}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></div><section class="single-product-area mt-20">
+<div class="container">
+	<div class="row single-product-info mb-50">
+		<div class="col-lg-6 col-md-6">
+			<div class="single-product-tab-content tab-content">
+				<div id="w1" class="tab-pane fade in active">
+					<div class="easyzoom easyzoom--overlay">
+						<a href="{{product.productImage.one.getUrl('productListing')}}">
+
+							<img src="{{product.productImage.one.getUrl('productListing')}}" alt="{{product.title}}">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--Product Tab Content End-->
+			<!--Single Product Tab Menu Start-->
+			<div class="single-product-tab">
+				<div class="nav single-product-tab-menu owl-carousel">
+					<a data-toggle="tab" href="#w1">
+						<img src="{{product.productImage.one.getUrl('productListing')}}" alt="">
+
+					</a>
+					<a data-toggle="tab" href="#w2">
+						<img src="{{product.productImage.one.getUrl('productListing')}}" alt="">
+
+					</a>
+					<a data-toggle="tab" href="#w3">
+						<img src="{{product.productImage.one.getUrl('productListing')}}" alt="">
+
+					</a>
+					<a data-toggle="tab" href="#w4">
+						<img src="{{product.productImage.one.getUrl('productListing')}}" alt="">
+
+					</a>
+					<a data-toggle="tab" href="#w5">
+						<img src="{{product.productImage.one.getUrl('productListing')}}" alt="">
+
+					</a>
+					<a data-toggle="tab" href="#w6">
+						<img src="{{product.productImage.one.getUrl('productListing')}}" alt="">
+
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-lg-6 col-md-6">
+			<div class="single-product-content">
+				<h1 class="product-title">
+					{{product.title}}
+				</h1>
+
+				<div class="single-product-price">
+					<span class="new-price">
+						{{ product.defaultPrice | currency('USD')}}
+					</span>
+				</div>
+
+				<div class="product-description">
+					<p>
+						{{product.productDescription}}
+					</p>
+				</div>
+
+				{% set variant = product.defaultVariant %}
+				<div class="single-product-quantity">
+					<p>
+						{% if variant.stock > 0 %}
+							<span style="background-color: green; padding: 5px; color: #fff;">
+								In Stock
+							</span>
+						{% else %}
+							<span>
+								Out of Stock
+							</span>
+						{% endif %}
+					</p>
+					<div>
+						<span style="margin-bottom: 15px;">
+							SKU:
+							{{variant.sku}}
+						</span>
+					</div>
+					<form method="POST">
+						<input type="hidden" name="action" value="commerce/cart/update-cart">
+						<input type="hidden" name="cartUpdatedNotice" value="added {{product.title}} to the cart">
+						{{ redirectInput('store/cart') }}
+						{{ csrfInput() }}
+						<input type="hidden" name="qty" value="1">
+						<input type="hidden" name="purchasableId" value="{{variant.id}}">
+						<input type="submit" class="button" value="Add to Cart">
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="discription-tab">
+			<div class="col-lg-12">
+				<div
+					class="discription-review-contnet mb-40">
+					<!--Discription Tab Menu Start-->
+					<div class="discription-tab-menu">
+						<ul class="nav">
+							<li>
+								<a class="active" data-toggle="tab" href="#description">
+									Description
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!--Discription Tab Menu End-->
+					<!--Discription Tab Content Start-->
+					<div class="discription-tab-content tab-content">
+						<div id="description" class="tab-pane fade show active">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="description-content">
+										<p>
+											{{product.productDescription}}
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<!--Discription Tab Content End-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div></section>{% endblock %}

@@ -1,0 +1,224 @@
+{% extends "_layouts/main" %}
+
+{% set cart = craft.commerce.carts.cart %}
+{% block main %}
+
+	<section class="heading-banner-area pt-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-banner">
+						<div class="breadcrumbs">
+							<ul>
+								<li>
+									<a href="/">
+										Home
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li>
+									Shopping Cart
+								</li>
+							</ul>
+						</div>
+						<div class="heading-banner-title">
+							<h1>
+								Shopping Cart
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="shopping-cart-area mt-20">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<form method="POST">
+						<input type="hidden" name="entryId" value="">
+
+						<input type="hidden" name="action" value="commerce/cart/update-cart">
+						<input type="hidden" name="cartUpdatedNotice" value="Updated line items.">
+
+
+						{{redirectInput('store/cart')}}
+						{{ csrfInput() }}
+
+						<div class="wishlist-table table-responsive">
+							{% if cart.lineItems|length %}
+
+								<table>
+									<thead>
+										<tr>
+											<th class="product-remove">
+												<span class="nobr">
+													Remove
+												</span>
+											</th>
+
+											<th class="product-cart-img">
+												<span class="nobr">
+													Product Image
+												</span>
+											</th>
+											<th class="product-name">
+												<span class="nobr">
+													Product Name
+												</span>
+											</th>
+											<th class="product-quantity">
+												<span class="nobr">
+													quantity
+												</span>
+											</th>
+											<th class="product-price">
+												<span class="nobr">
+													Unit Price
+												</span>
+											</th>
+											<th class="product-total-price">
+												<span class="nobr">
+													Total Price
+												</span>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										{% for item in cart.lineItems %}
+
+
+											<tr>
+												<td class="product-remove">
+													<input type="checkbox" name="lineItems[{{item.id}}][remove]" value="1">
+												</td>
+												<td class="product-cart-img">
+													<a href="{{item.purchasable.product.url}}">
+														<img width="100px" height="100px" src="{{item.purchasable.product.productImage.one.getUrl()}}" alt="">
+													</a>
+												</td>
+												<td class="product-name">
+													<a href="{{item.purchasable.product.url}}">
+														{{item.purchasable.product.productTitle}}
+													</a>
+												</td>
+												<td class="product-quantity">
+													<input type="hidden" name="lineItems[{{item.id}}][id]" value="{{item.id}}">
+													<div class="col-lg-5 m-auto">
+														<input type="number" name="lineItems[{{item.id}}][qty]" min="1" value="{{item.qty}}">
+													</div>
+
+												</td>
+												<td class="product-price">
+													<span>
+														<ins>
+															{{ item.price | commerceCurrency(cart.currency) }}
+														</ins>
+													</span>
+												</td>
+												<td class="product-total-price">
+													<span>
+														{{item.subtotal | commerceCurrency(cart.currency) }}
+
+													</span>
+												</td>
+											</tr>
+
+										{% endfor %}
+										<div class="col-lg-2">
+											<input class="update-btn" type="submit" value="Update Cart"/>
+
+										</div>
+										<br/>
+									</tbody>
+								</form>
+							</tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-6 col-md-6">
+				<form action="#">
+					<div class="cart-collaterals">
+						<div class="cart-cuppon">
+							<div class="coupon">
+								<input name="coupon_code" class="input-copun" value="" placeholder="Coupon code" type="text">
+								<button type="submit" class="wishlist-btn shopping-btn">
+									Apply coupon
+								</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-6 col-md-6">
+				<div class="wishlist-btn shopping-btn col-lg-4 pull-right m-1">
+					<a href="{{url('store/')}}" class="continue-shopping">
+						Continue Shopping
+					</a>
+				</div>
+
+				<div class="shopping-cart-total">
+					<h2>
+						Cart totals
+					</h2>
+					<div class="shop-table table-responsive">
+						<table>
+							<tbody>
+								<tr class="cart-subtotal">
+									<td data-title="Subtotal">
+										<span>
+											{{ cart.totalPrice | currency(cart.currency )}}
+										</span>
+									</td>
+								</tr>
+								<tr class="shipping">
+									<td data-title="Shipping">
+										Shipping Total:
+										<Span>
+											{{ cart.totalShippingCost | currency(cart.currency) }}
+										</Span>
+										{# <a href="#">Calculate shipping</a> #}
+									</td>
+								</tr>
+								<tr class="order-total">
+									<td data-title="Total">
+										<span>
+											<strong>
+												{{ cart.totalPrice | currency(cart.currency )}}
+
+											</strong>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="proceed-to-checkout">
+						<a class="checkout-button " href="{{url('store/checkout')}}">
+							Proceed to checkout
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% else %}
+	<div class="wishlist-table table-responsive">
+		<div>
+			You have no items in the cart.
+			<a href="/store">
+				Add products!
+			</a>
+		</div>
+	</div>
+{% endif %}</div>{% endblock %}

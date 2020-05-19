@@ -1,0 +1,1296 @@
+{% extends "_layouts/main"  %}
+{% block main %}
+	<!--Slider Area Start-->
+	<div class="wrapper">
+		<div class="container">
+			<section class="slider-area ptb-30">
+				<div class="mx-auto px-10">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 box-shd">
+							<div class="single-offer mb-20">
+								<div class="side-menu">
+									<div class="category-heading">
+										<h2>
+											<span>
+												categories
+											</span>
+										</h2>
+									</div>
+									<div id="cate-toggle" class="category-menu-list">
+										<ul>
+											<li>
+												<div>
+													<a href="/store">
+														Bells
+													</a>
+												</div>
+												<div>
+													<img width="40px" height="40px" src="img/home/Bell.png" alt="">
+												</div>
+											</li>
+											<li>
+												<div>
+													<a href="/store">
+														Adapters
+													</a>
+												</div>
+												<div>
+													<img width="40px" height="40px" src="img/home/Bitmap.png" alt="">
+												</div>
+											</li>
+											<li>
+												<div>
+													<a href="/store">
+
+														Truck Hardware
+													</a>
+												</div>
+												<div>
+													<img width="40px" height="40px" src="img/home/truckHardware.png" alt="">
+												</div>
+											</li>
+											<li>
+												<div>
+													<a href="/store">
+
+														Elbows
+													</a>
+												</div>
+												<div>
+													<img width="40px" height="40px" src="img/home/elbow.png" alt="">
+												</div>
+											</li>
+											<li>
+												<div>
+													<a href="/store">
+
+														Caps
+													</a>
+												</div>
+												<div>
+													<img width="40px" height="40px" src="img/home/icon_cap.png" alt="">
+												</div>
+											</li>
+											<li>
+												<div>
+													<a href="/store">
+
+														Valves
+													</a>
+												</div>
+												<div>
+													<img width="40px" height="40px" src="img/home/valves.png" alt="">
+												</div>
+											</li>
+
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-8 col-md-8">
+							<div class="slider-wrapper theme-default">
+								<img src="img/home/home-bell.jpeg" alt="" title="#htmlcaption"/>
+								<div class="caption-banner">
+									<span>
+										<a href="/shop">
+											Shop our products
+										</a>
+									</span>
+								</<span>
+								<span>
+									<a href="/find-a-dealer">
+										Find a Dealer
+									</a>
+								</span>
+							</<span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div></section><section>
+
+<div class="col-lg-11 m-auto">
+	<div class="dealer-locator" style="background-image: url('img/home/doorCloseup.jpeg')">
+		<div class="col-lg-4 offer-img img-full">
+			{{entry.richText}}
+		</div>
+	</div>
+
+
+</div></section><section class="all-product-area pt-100">
+<div class="container">
+	<divclass="row">
+		<divclass="col-lg-9col-md-9">
+			<div class="desktop-television-product">
+				<div class="row">
+					<div class="col-lg-12">
+
+						<div class="section-title1-border">
+							<div class="section-title1">
+								<h3>
+									Popular
+								</h3>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="tab-content">
+					<div id="amply" class="tab-pane fade show active">
+						<div class="row">
+							<div class="all-product mb-85  owl-carousel">
+								{% set myProductQuery = craft.products().type('products').limit(8) %}
+
+								{# Fetch the products #}
+								{% set products = myProductQuery.all() %}
+								{# Display the products #}
+								{% for product in products %}
+
+									<div class="col-lg-12 item-col">
+										<div class="single-product">
+											<div class="product-img">
+												<a href="{{product.url}}">
+													<img class="first-img" src="{{product.productImage.one.getUrl('productListing')}}" alt="{{product.title}}" alt="">
+												</a>
+											</div>
+											<div class="product-content">
+												<h2>
+													<a href="{{product.url}}">
+														{{product.title}}
+													</a>
+												</h2>
+												<span class="new-price">
+													{{product.defaultPrice | currency('USD')}}
+
+												</span>
+												{% set variant = product.defaultVariant %}
+
+												<form method="POST">
+													<input type="hidden" name="action" value="commerce/cart/update-cart">
+													<input type="hidden" name="cartUpdatedNotice" value="added {{product.title}} to the cart">
+													{{ redirectInput('store/cart') }}
+													{{ csrfInput() }}
+													<input type="hidden" name="qty" value="1">
+													<input type="hidden" name="purchasableId" value="{{variant.id}}">
+													<input type="submit" class="button" value="Add to Cart">
+												</form>
+
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="#">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Bells
+												</a>
+											</h2>
+											<span class="new-price">
+												$145.00
+											</span>
+											<a href="#" class="button">
+												Add to Cart
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="#">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Bells
+												</a>
+											</h2>
+											<span class="new-price">
+												$145.00
+											</span>
+											<a href="#" class="button">
+												Add to Cart
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="#">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Bells
+												</a>
+											</h2>
+											<span class="new-price">
+												$145.00
+											</span>
+											<a href="#" class="button">
+												Add to Cart
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="#">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Bells
+												</a>
+											</h2>
+											<span class="new-price">
+												$145.00
+											</span>
+											<a href="#" class="button">
+												Add to Cart
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="smarttV" class="tab-pane fade">
+						<div class="row">
+							<div class="all-product mb-85  owl-carousel">
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/7.jpg" alt="">
+												<img class="hover-img" src="img/product/8.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Natural passages
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/9.jpg" alt="">
+												<img class="hover-img" src="img/product/10.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/11.jpg" alt="">
+												<img class="hover-img" src="img/product/12.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													typesetting animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/3.jpg" alt="">
+												<img class="hover-img" src="img/product/4.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Natural passages
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/5.jpg" alt="">
+												<img class="hover-img" src="img/product/6.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="speaker" class="tab-pane fade">
+						<div class="row">
+							<div class="all-product mb-85  owl-carousel">
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/5.jpg" alt="">
+												<img class="hover-img" src="img/product/6.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/7.jpg" alt="">
+												<img class="hover-img" src="img/product/8.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Natural passages
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/9.jpg" alt="">
+												<img class="hover-img" src="img/product/10.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/3.jpg" alt="">
+												<img class="hover-img" src="img/product/4.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Natural passages
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/11.jpg" alt="">
+												<img class="hover-img" src="img/product/12.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													typesetting animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tv" class="tab-pane fade">
+						<div class="row">
+							<div class="all-product mb-85  owl-carousel">
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/3.jpg" alt="">
+												<img class="hover-img" src="img/product/4.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Natural passages
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/5.jpg" alt="">
+												<img class="hover-img" src="img/product/6.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/1.jpg" alt="">
+												<img class="hover-img" src="img/product/2.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/7.jpg" alt="">
+												<img class="hover-img" src="img/product/8.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Natural passages
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/9.jpg" alt="">
+												<img class="hover-img" src="img/product/10.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													Letraset animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 item-col">
+									<div class="single-product">
+										<div class="product-img">
+											<a href="single-product.html">
+												<img class="first-img" src="img/product/11.jpg" alt="">
+												<img class="hover-img" src="img/product/12.jpg" alt="">
+											</a>
+											<span class="sicker">
+												-7%
+											</span>
+											<ul class="product-action">
+												<li>
+													<a href="#" data-toggle="tooltip" title="Add to Wishlist">
+														<i class="ion-android-favorite-outline"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="tooltip" title="Compare">
+														<i class="ion-ios-shuffle-strong"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" title="Quick View" data-target="#myModal">
+														<i class="ion-android-expand"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+										<div class="product-content">
+											<h2>
+												<a href="single-product.html">
+													typesetting animal
+												</a>
+											</h2>
+											<div class="rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-price">
+												<span class="old-price">
+													$74.00
+												</span>
+												<span class="new-price">
+													$69.00
+												</span>
+												<a class="button add-btn" href="#" data-toggle="tooltip" title="Add to Cart">
+													add to cart
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div></div>{% endblock %}

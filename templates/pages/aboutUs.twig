@@ -1,0 +1,51 @@
+{% extends "_layouts/main"  %}
+{% block main %}
+	<section class="heading-banner-area pt-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-banner">
+						<div class="breadcrumbs">
+							<ul>
+								<li>
+									<a href="/">
+										Home
+									</a>
+									<span class="breadcome-separator">
+										>
+									</span>
+								</li>
+								<li>
+									About Us
+								</li>
+							</ul>
+						</div>
+						<div class="heading-banner-title">
+							<h1>
+								{{entry.sectionTitle}}
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="frequently-question mt-20">
+		<div class="container">
+			<div
+				class="row">
+				<!--Frequently Content Start-->
+				<div class="col-lg-12">
+					<div class="frequently-content mb-50">
+						<div class="frequently-title">
+
+							<p>
+								{{entry.aboutContent}}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endblock %}
